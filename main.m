@@ -140,9 +140,20 @@ for fileNo = 1:13
                 % strongest peak in Srls is looked for such that it lies 
                 % close to fprev within a range 7 - 12 BPM
                 
-                f_ = max(f_rls_set);
-                if abs(f_ - fPrev)<=12
+                f_ = maxFind(y_cropped,fSampling);
+                if abs(f_ - fPrev) <= 9
                    freqEstimates = f_; 
+                end
+                
+                if freqEstimates == -1
+                   
+                    % Iftheabovestepsfailto provide with the crude estimate 
+                    % f , then we consider all the peak locations attainable 
+                    % from the periodograms of yi (n) and array them together 
+                    % in a set Sorg
+                    
+                    
+                    
                 end
                
             end          
