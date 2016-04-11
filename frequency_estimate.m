@@ -1,4 +1,4 @@
-function frq_est=frequency_estimate(p,q,ax,ay,az,prev,chno,mul)
+function frq_est=frequency_estimate(p,q,ax,ay,az,prev,mul)
     frq_est1=-1;
     frq_est2=-1;
     ch1=time_domain(p,ax,ay,az,mul);
@@ -31,11 +31,7 @@ function frq_est=frequency_estimate(p,q,ax,ay,az,prev,chno,mul)
         frq_est2=w(loc)
     end
 
-    if chno==1
-        frq_est2=frq_est1;
-    elseif chno==2
-        frq_est1=frq_est2;
-    end
+    
     frq_est=-1;
 
 

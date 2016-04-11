@@ -72,6 +72,11 @@ for fileNo = 1:13
         % take the peak location nearest to fprev
         [minimum,loc] = min(abs(peaks - fPrev));
         
+        freq_td = frequency_estimate( sig(2,currentSegment),...
+                  sig(3,currentSegment),sig(4,currentSegment),...
+                  sig(5,currentSegment),sig(6,currentSegment),...
+                  fPrev,multiplier);    
+        
         if freqEstimates ~= -1
            % tracking from AC 
            delta_count = 0;
@@ -129,7 +134,7 @@ for fileNo = 1:13
             elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
                 % from td
                 fprintf('tracking from td');
-                
+                freqEstimates = freq_td;
               
             else  
                 % strongest peak in Srls is looked for such that it lies 
