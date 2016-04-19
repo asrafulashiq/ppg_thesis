@@ -115,7 +115,7 @@ end
 peaks = S_imf_a_3;
 
 if isempty(G_2)
-    fprintf('G_2 is empty');
+    %fprintf('G_2 is empty');
     return;
 end
 
