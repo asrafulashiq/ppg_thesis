@@ -20,7 +20,7 @@ fclose(fileID);
 fileID = fopen(fileToSaveResult,'a');
 
 
-for fileNo = 2:total_file_no
+for fileNo = 10%2:total_file_no
     
     fprintf(fileID,'file no : %d\n',fileNo);
     
@@ -83,6 +83,11 @@ for fileNo = 2:total_file_no
     iCounter = 1;
     for iSegment = iStart : iStep : iStop
         
+        % for debug
+        if iCounter==16
+           1; 
+        end
+        
         currentSegment = iSegment : ( iSegment + 1000 * multiplier - 1 );
         
         [freqEstimates,peaks] = doEEMD(sig(:,currentSegment),fPrev,delta_count,fSampling);
@@ -108,6 +113,11 @@ for fileNo = 2:total_file_no
                 delta_count = delta_count - 0.5;
             end
             fprintf('tracking from emd : ');
+        elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
+            % from td
+            fprintf('tracking from td : ');
+            freqEstimates = freq_td;
+            
         else % track from rls
             delta_count = delta_count + 1;
             
@@ -150,10 +160,7 @@ for fileNo = 2:total_file_no
                 freqEstimates = f_rls_set(1);
                 %fprintf('abs cause\n');
                 
-            elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
-                % from td
-                fprintf('tracking from td : ');
-                freqEstimates = freq_td;
+                
                 
             else
                 % strongest peak in Srls is looked for such that it lies
