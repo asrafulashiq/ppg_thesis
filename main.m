@@ -1,16 +1,28 @@
-clc;
 clear;
 close all;
 
 total_file_no = 13;
 
 fSampling = 125 ; % sampling frequency of the data
-multiplier = round(fSampling/128);
+multiplier = round(fSampling/125);
 
 bpm_estimeates = zeros(total_file_no,1);
 avg_error = zeros(total_file_no,1);
 
+% write the results in a new file
+% create new file
+fileToSaveResult = 'result.txt';
+fileID = fopen(fileToSaveResult,'w');
+fprintf(fileID,'## RESULT : \n----------------\n');
+fclose(fileID);
+
+% open file for appendind
+fileID = fopen(fileToSaveResult,'a');
+
+
 for fileNo = 2:total_file_no
+    
+    fprintf(fileID,'file no : %d\n',fileNo);
     
     ii = 0;
     avg = 0;
@@ -63,7 +75,7 @@ for fileNo = 2:total_file_no
     
     iStart = 1;
     iStep  = 250 * multiplier ;
-    iStop  = length(rN);
+    iStop  = length(rN) - 1000 * multiplier ;
     
     delta_count = 0 ; % need in EEMD
     
@@ -87,7 +99,7 @@ for fileNo = 2:total_file_no
         if freqEstimates ~= -1
             % tracking from AC
             delta_count = 0;
-            fprintf('tracking from AC\n');
+            fprintf('tracking from AC : ');
             
         elseif minimum <= 7 % If its distance from fprev is within 7 BPM
             % tracking from emd 2
@@ -95,7 +107,7 @@ for fileNo = 2:total_file_no
             if delta_count>0
                 delta_count = delta_count - 0.5;
             end
-            fprintf('tracking from emd \n');
+            fprintf('tracking from emd : ');
         else % track from rls
             delta_count = delta_count + 1;
             
@@ -132,7 +144,7 @@ for fileNo = 2:total_file_no
                 
             end
             
-            f_rls_set = f_rls_set( find(f_rls_set>40 & f_rls_set<200 ) );
+            f_rls_set = f_rls_set( f_rls_set>40 & f_rls_set<200 );
             
             if length(f_rls_set)==1 && abs(f_rls_set-fPrev)<25
                 freqEstimates = f_rls_set(1);
@@ -140,7 +152,7 @@ for fileNo = 2:total_file_no
                 
             elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
                 % from td
-                fprintf('tracking from td\n');
+                fprintf('tracking from td : ');
                 freqEstimates = freq_td;
                 
             else
@@ -154,7 +166,7 @@ for fileNo = 2:total_file_no
                 
                 if freqEstimates == -1
                     
-                    % Iftheabovestepsfailto provide with the crude estimate
+                    % If the above steps fail to provide with the crude estimate
                     % f , then we consider all the peak locations attainable
                     % from the periodograms of yi (n) and array them together
                     % in a set Sorg
@@ -189,10 +201,20 @@ for fileNo = 2:total_file_no
         
         fprintf('\naverage : %.2f\n',avg);
         
+        fprintf(fileID,' #%d : error : %.2f , average : %.2f\n'...
+            ,iCounter,err,avg);
+        
         iCounter = iCounter + 1;
         
     end
     
     avg_error(fileNo) = avg;
     
+    fprintf(fileID,'Average Error : %.2f \n',avg);
+    fprintf(fileID,'--------------------');
+    fprintf(fileID,'--------------------');
+    
+    
 end
+
+fclose(fileID);
