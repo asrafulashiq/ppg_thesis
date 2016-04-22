@@ -84,7 +84,7 @@ for fileNo = 10%2:total_file_no
     for iSegment = iStart : iStep : iStop
         
         % for debug
-        if iCounter==17
+        if iCounter==19
            1; 
         end
         
@@ -156,7 +156,7 @@ for fileNo = 10%2:total_file_no
             
             f_rls_set = f_rls_set( f_rls_set>40 & f_rls_set<200 );
             
-            if length(f_rls_set)==1 && abs(f_rls_set-fPrev)<30
+            if length(f_rls_set)==1 && abs(f_rls_set-fPrev)<25
                 freqEstimates = f_rls_set(1);
                 %fprintf('abs cause\n');
                 
