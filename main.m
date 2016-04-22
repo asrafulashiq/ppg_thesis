@@ -20,7 +20,7 @@ fclose(fileID);
 fileID = fopen(fileToSaveResult,'a');
 
 
-for fileNo = 10%2:total_file_no
+for fileNo = 1:total_file_no
     
     fprintf(fileID,'file no : %d\n',fileNo);
     
@@ -83,11 +83,11 @@ for fileNo = 10%2:total_file_no
     iCounter = 1;
     for iSegment = iStart : iStep : iStop
         
-        % for debug
-        if iCounter==17
-           1; 
-        end
-        
+%         % for debug
+%         if iCounter==17
+%            1; 
+%         end
+         
         currentSegment = iSegment : ( iSegment + 1000 * multiplier - 1 );
         
         [freqEstimates,peaks] = doEEMD(sig(:,currentSegment),fPrev,delta_count,fSampling);
