@@ -83,11 +83,11 @@ for fileNo =  2%1:total_file_no
     iCounter = 1;
     for iSegment = iStart : iStep : iStop
         
-        % for debug
-        if iCounter==132
-            1;
-        end
-        
+         % for debug
+         if iCounter==132
+            1; 
+         end
+         
         currentSegment = iSegment : ( iSegment + 1000 * multiplier - 1 );
         
         [freqEstimates,peaks] = doEEMD(sig(:,currentSegment),fPrev,delta_count,fSampling);
@@ -113,10 +113,10 @@ for fileNo =  2%1:total_file_no
                 delta_count = delta_count - 0.5;
             end
             fprintf('tracking from emd : ');
-            %         elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
-            %             % from td
-            %             fprintf('tracking from td : ');
-            %             freqEstimates = freq_td;
+%         elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
+%             % from td
+%             fprintf('tracking from td : ');
+%             freqEstimates = freq_td;
             
         else % track from rls
             delta_count = delta_count + 1;
@@ -135,7 +135,7 @@ for fileNo =  2%1:total_file_no
             for iAcc = 4:6
                 
                 dominantPeaks = maxFindFromThreshold(sig(iAcc,currentSegment),...
-                    0.2,fSampling);  %%%% thresh-hold was 0.6 in paper
+                    0.6,fSampling);  %%%% thresh-hold was 0.2
                 if length(dominantPeaks)>2
                     dominantPeaks = dominantPeaks(1:2);
                 end
@@ -159,10 +159,7 @@ for fileNo =  2%1:total_file_no
             if length(f_rls_set)==1 && abs(f_rls_set-fPrev)<30
                 freqEstimates = f_rls_set(1);
                 %fprintf('abs cause\n');
-            elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
-                % from td
-                fprintf('tracking from td : ');
-                freqEstimates = freq_td;
+                
                 
                 
             else
@@ -197,7 +194,7 @@ for fileNo =  2%1:total_file_no
             end
         end
         
-        [freqEstimates, ii]=call_nlms2(ppgSignal1(currentSegment),ppgSignal2(currentSegment),...
+        [freqEstimates, ii]=call_nlms2(sig(2,currentSegment),sig(3,currentSegment),...
             multiplier,freqEstimates,4,ii);
         
         

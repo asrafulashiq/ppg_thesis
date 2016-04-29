@@ -2,3 +2,13 @@
 RESULT : 
 ----------------
 file no : 2
+ #1 : error : 0.17 , average : 0.17
+   prev : 87.33 , freq : 84.91, actual : 84.75
+ #2 : error : -0.95 , average : 0.56
+   prev : 84.91 , freq : 88.82, actual : 89.77
+ #3 : error : 0.62 , average : 0.58
+   prev : 88.82 , freq : 93.21, actual : 92.59
+ #4 : error : 3.78 , average : 1.38
+   prev : 93.21 , freq : 92.78, actual : 89.00
+ #5 : error : 8.98 , average : 2.90
+   prev : 92.78 , freq : 93.35, actual : 84.36
