@@ -26,11 +26,11 @@ end
 load(datafile); %The main data file, returns sig ;
 load(ansfile); % calculated BPM Data file, returns BPM0 ;
 
-load('Original_JOSS.mat');
-BPM=Original(fileNo,find(Original(fileNo,:)~=0));
-shift=length(BPM0)-length(BPM);
-sig=sig(:,(1+shift*250):length(sig));
-BPM0=BPM;
+% load('Original_JOSS.mat');
+% BPM=Original(fileNo,find(Original(fileNo,:)~=0));
+% shift=length(BPM0)-length(BPM);
+% sig=sig(:,(1+shift*250):length(sig));
+% BPM0=BPM;
 
 
 end

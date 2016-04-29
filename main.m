@@ -13,14 +13,14 @@ avg_error = zeros(total_file_no,1);
 % create new file
 fileToSaveResult = 'result.txt';
 fileID = fopen(fileToSaveResult,'w');
-fprintf(fileID,'## RESULT : \n----------------\n');
+fprintf(fileID,'####### \nRESULT : \n----------------\n');
 fclose(fileID);
 
 % open file for appendind
 fileID = fopen(fileToSaveResult,'a');
 
 
-for fileNo = 1:total_file_no
+for fileNo =  2%1:total_file_no
     
     fprintf(fileID,'file no : %d\n',fileNo);
     
@@ -83,10 +83,10 @@ for fileNo = 1:total_file_no
     iCounter = 1;
     for iSegment = iStart : iStep : iStop
         
-%         % for debug
-%         if iCounter==17
-%            1; 
-%         end
+         % for debug
+         if iCounter==132
+            1; 
+         end
          
         currentSegment = iSegment : ( iSegment + 1000 * multiplier - 1 );
         
@@ -113,10 +113,10 @@ for fileNo = 1:total_file_no
                 delta_count = delta_count - 0.5;
             end
             fprintf('tracking from emd : ');
-        elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
-            % from td
-            fprintf('tracking from td : ');
-            freqEstimates = freq_td;
+%         elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
+%             % from td
+%             fprintf('tracking from td : ');
+%             freqEstimates = freq_td;
             
         else % track from rls
             delta_count = delta_count + 1;
@@ -198,7 +198,7 @@ for fileNo = 1:total_file_no
             multiplier,freqEstimates,4,ii);
         
         
-        fPrev = freqEstimates;
+        
         
         
         bpm_estimeates(fileNo,iCounter) = freqEstimates;
@@ -208,10 +208,11 @@ for fileNo = 1:total_file_no
         
         fprintf('\naverage : %.2f\n',avg);
         
-        fprintf(fileID,' #%d : error : %.2f , average : %.2f\n'...
-            ,iCounter,err,avg);
+        fprintf(fileID,' #%d : error : %.2f , average : %.2f\n   prev : %.2f , freq : %.2f, actual : %.2f\n'...
+            ,iCounter,err,avg,fPrev,freqEstimates,bpm0(iCounter));
         
         iCounter = iCounter + 1;
+        fPrev = freqEstimates;
         
     end
     
