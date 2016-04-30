@@ -9,20 +9,22 @@ multiplier = round(fSampling/125);
 bpm_estimeates = zeros(total_file_no,1);
 avg_error = zeros(total_file_no,1);
 
+isDebug = 0 ; % debug mode false by default:
+
 % write the results in a new file
 % create new file
-fileToSaveResult = 'result.txt';
-fileID = fopen(fileToSaveResult,'w');
-fprintf(fileID,'####### \nRESULT : \n----------------\n');
-fclose(fileID);
+ fileToSaveResult = 'result.txt';
+% fileID = fopen(fileToSaveResult,'w');
+% fprintf(fileID,'####### \nRESULT : \n----------------\n');
+% fclose(fileID);
 
 % open file for appendind
 fileID = fopen(fileToSaveResult,'a');
 
 
-for fileNo =  2%1:total_file_no
+for fileNo =  1%1:total_file_no
     
-    fprintf(fileID,'file no : %d\n',fileNo);
+    fprintf(fileID,'----------\nfile no : %d\n---------\n',fileNo);
     
     ii = 0;
     avg = 0;
@@ -79,14 +81,26 @@ for fileNo =  2%1:total_file_no
     
     delta_count = 0 ; % need in EEMD
     
-    
     iCounter = 1;
-    for iSegment = iStart : iStep : iStop
+    % For debug
+    
+    
+    iSegment = iStart;
+    
+    while iSegment <= iStop
         
         % for debug
-        if iCounter==132
+        if iCounter==29
             1;
         end
+        
+        if isDebug==1
+            % set iCounter
+            % set fPrev
+            iSegment = iStart + (iCounter-1) * iStep ;
+       
+        end
+        
         
         currentSegment = iSegment : ( iSegment + 1000 * multiplier - 1 );
         
@@ -135,7 +149,7 @@ for fileNo =  2%1:total_file_no
             for iAcc = 4:6
                 
                 dominantPeaks = maxFindFromThreshold(sig(iAcc,currentSegment),...
-                    0.2,fSampling);  %%%% thresh-hold was 0.6 in paper
+                    0.6,fSampling);  %%%% thresh-hold was 0.6 in paper
                 if length(dominantPeaks)>2
                     dominantPeaks = dominantPeaks(1:2);
                 end
@@ -156,7 +170,7 @@ for fileNo =  2%1:total_file_no
             
             f_rls_set = f_rls_set( f_rls_set>40 & f_rls_set<200 );
             
-            if length(f_rls_set)==1 && abs(f_rls_set-fPrev)<30
+            if length(f_rls_set)==1 && abs(f_rls_set-fPrev)<26.5
                 freqEstimates = f_rls_set(1);
                 %fprintf('abs cause\n');
             elseif freq_td ~= -1 && abs(freq_td - fPrev ) < 12
@@ -166,12 +180,19 @@ for fileNo =  2%1:total_file_no
                 
                 
             else
-                % strongest peak in Srls is looked for such that it lies
-                % close to fprev within a range 7 - 12 BPM
                 
-                f_ = maxFind(y_cropped,fSampling);
-                if abs(f_ - fPrev) <= 9
-                    freqEstimates = f_;
+%%%% according to paper 
+%                 % strongest peak in Srls is looked for such that it lies
+%                 % close to fprev within a range 7 - 12 BPM
+%                 
+%                 f_ = maxFind(y_cropped,fSampling);
+%                 if abs(f_ - fPrev) <= 9
+%                     freqEstimates = f_;
+%                 end
+
+                if min(abs(S_rls-fPrev))<9
+                   [~,pos] = min(abs(S_rls-fPrev)); 
+                   freqEstimates = S_rls(pos); 
                 end
                 
                 if freqEstimates == -1
@@ -181,8 +202,10 @@ for fileNo =  2%1:total_file_no
                     % from the periodograms of yi (n) and array them together
                     % in a set Sorg
                     
-                    S_org = findSignalPeaks(sig(2:3,currentSegment),fPrev ,5,fSampling);
-                    S_a0  = findSignalPeaks(sig(4:6,currentSegment),fPrev,10,fSampling);
+                    S_org = findSignalPeaks([sig(2,currentSegment);sig(3,currentSegment);sig(4,currentSegment)]...
+                        ,fPrev ,5,fSampling);
+                    S_a0  = findSignalPeaks([sig(4,currentSegment);sig(5,currentSegment);sig(6,currentSegment)]...
+                        ,fPrev,10,fSampling);
                     
                     if abs(S_org - S_a0)>3
                         freqEstimates = S_org;
@@ -217,6 +240,7 @@ for fileNo =  2%1:total_file_no
         iCounter = iCounter + 1;
         fPrev = freqEstimates;
         
+        iSegment = iSegment + iStep;
     end
     
     avg_error(fileNo) = avg;

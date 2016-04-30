@@ -1,14 +1,151 @@
-####### 
-RESULT : 
-----------------
-file no : 2
- #1 : error : 0.17 , average : 0.17
-   prev : 87.33 , freq : 84.91, actual : 84.75
- #2 : error : -0.95 , average : 0.56
-   prev : 84.91 , freq : 88.82, actual : 89.77
- #3 : error : 0.62 , average : 0.58
-   prev : 88.82 , freq : 93.21, actual : 92.59
- #4 : error : 3.78 , average : 1.38
-   prev : 93.21 , freq : 92.78, actual : 89.00
- #5 : error : 8.98 , average : 2.90
-   prev : 92.78 , freq : 93.35, actual : 84.36
+----------
+file no : 1
+---------
+ #1 : error : -0.11 , average : 0.11
+   prev : 70.53 , freq : 74.22, actual : 74.34
+ #2 : error : -0.46 , average : 0.29
+   prev : 74.22 , freq : 75.89, actual : 76.36
+ #3 : error : 0.23 , average : 0.27
+   prev : 75.89 , freq : 77.37, actual : 77.14
+ #4 : error : 0.90 , average : 0.43
+   prev : 77.37 , freq : 75.57, actual : 74.67
+ #5 : error : 0.49 , average : 0.44
+   prev : 75.57 , freq : 73.07, actual : 72.58
+ #6 : error : -0.55 , average : 0.46
+   prev : 73.07 , freq : 71.14, actual : 71.68
+ #7 : error : -0.22 , average : 0.42
+   prev : 71.14 , freq : 72.67, actual : 72.89
+ #8 : error : 0.84 , average : 0.48
+   prev : 72.67 , freq : 74.29, actual : 73.45
+ #9 : error : -1.30 , average : 0.57
+   prev : 74.29 , freq : 74.04, actual : 75.33
+ #10 : error : -1.40 , average : 0.65
+   prev : 74.04 , freq : 75.45, actual : 76.84
+ #11 : error : -1.50 , average : 0.73
+   prev : 75.45 , freq : 78.10, actual : 79.60
+ #12 : error : 2.45 , average : 0.87
+   prev : 78.10 , freq : 81.56, actual : 79.11
+ #13 : error : 1.87 , average : 0.95
+   prev : 81.56 , freq : 76.37, actual : 74.50
+ #14 : error : -2.50 , average : 1.06
+   prev : 76.37 , freq : 68.34, actual : 70.84
+ #15 : error : 0.07 , average : 0.99
+   prev : 68.34 , freq : 69.65, actual : 69.59
+ #16 : error : -2.08 , average : 1.06
+   prev : 69.65 , freq : 69.86, actual : 71.94
+ #17 : error : -6.61 , average : 1.39
+   prev : 69.86 , freq : 70.71, actual : 77.32
+ #18 : error : -10.68 , average : 1.90
+   prev : 70.71 , freq : 69.62, actual : 80.30
+ #19 : error : -15.66 , average : 2.63
+   prev : 69.62 , freq : 67.21, actual : 82.87
+ #20 : error : -15.09 , average : 3.25
+   prev : 67.21 , freq : 68.42, actual : 83.52
+ #21 : error : -15.93 , average : 3.85
+   prev : 68.42 , freq : 68.72, actual : 84.65
+ #22 : error : -16.94 , average : 4.45
+   prev : 68.72 , freq : 71.29, actual : 88.24
+ #23 : error : -16.06 , average : 4.95
+   prev : 71.29 , freq : 74.90, actual : 90.96
+ #24 : error : -9.70 , average : 5.15
+   prev : 74.90 , freq : 83.18, actual : 92.88
+ #25 : error : -13.90 , average : 5.50
+   prev : 83.18 , freq : 80.84, actual : 94.74
+ #26 : error : 2.76 , average : 5.40
+   prev : 80.84 , freq : 100.05, actual : 97.29
+ #27 : error : -2.85 , average : 5.30
+   prev : 100.05 , freq : 96.82, actual : 99.67
+ #28 : error : -3.00 , average : 5.22
+   prev : 96.82 , freq : 98.58, actual : 101.58
+ #29 : error : 0.61 , average : 5.06
+   prev : 98.58 , freq : 103.46, actual : 102.85
+ #30 : error : 1.43 , average : 4.94
+   prev : 103.46 , freq : 104.88, actual : 103.45
+ #31 : error : 0.40 , average : 4.79
+   prev : 104.88 , freq : 103.58, actual : 103.17
+ #32 : error : -0.81 , average : 4.67
+   prev : 103.58 , freq : 102.14, actual : 102.96
+ #33 : error : 0.06 , average : 4.53
+   prev : 102.14 , freq : 103.34, actual : 103.28
+ #34 : error : 0.44 , average : 4.41
+   prev : 103.34 , freq : 104.50, actual : 104.06
+ #35 : error : 0.86 , average : 4.31
+   prev : 104.50 , freq : 107.07, actual : 106.21
+ #36 : error : -0.82 , average : 4.21
+   prev : 107.07 , freq : 107.76, actual : 108.58
+ #37 : error : 0.12 , average : 4.10
+   prev : 107.76 , freq : 110.79, actual : 110.67
+ #38 : error : -1.47 , average : 4.03
+   prev : 110.79 , freq : 110.12, actual : 111.58
+ #39 : error : -0.69 , average : 3.95
+   prev : 110.12 , freq : 111.61, actual : 112.30
+ #40 : error : -0.64 , average : 3.86
+   prev : 111.61 , freq : 112.14, actual : 112.78
+ #41 : error : 0.34 , average : 3.78
+   prev : 112.14 , freq : 113.98, actual : 113.64
+ #42 : error : -0.04 , average : 3.69
+   prev : 113.98 , freq : 114.46, actual : 114.50
+ #43 : error : -1.40 , average : 3.63
+   prev : 114.46 , freq : 113.73, actual : 115.13
+ #44 : error : -2.00 , average : 3.60
+   prev : 113.73 , freq : 114.02, actual : 116.02
+ #45 : error : -3.28 , average : 3.59
+   prev : 114.02 , freq : 113.78, actual : 117.06
+ #46 : error : -4.77 , average : 3.62
+   prev : 113.78 , freq : 113.78, actual : 118.55
+ #47 : error : -6.41 , average : 3.68
+   prev : 113.78 , freq : 113.78, actual : 120.19
+ #48 : error : -11.60 , average : 3.84
+   prev : 113.78 , freq : 110.29, actual : 121.89
+ #49 : error : -10.50 , average : 3.98
+   prev : 110.29 , freq : 113.47, actual : 123.97
+ #50 : error : 0.40 , average : 3.91
+   prev : 113.47 , freq : 126.18, actual : 125.79
+ #51 : error : -0.08 , average : 3.83
+   prev : 126.18 , freq : 127.99, actual : 128.07
+ #52 : error : -5.78 , average : 3.87
+   prev : 127.99 , freq : 125.08, actual : 130.86
+ #53 : error : -8.47 , average : 3.95
+   prev : 125.08 , freq : 124.72, actual : 133.19
+ #54 : error : -10.80 , average : 4.08
+   prev : 124.72 , freq : 124.70, actual : 135.49
+ #55 : error : -13.96 , average : 4.26
+   prev : 124.70 , freq : 123.23, actual : 137.20
+ #56 : error : -19.18 , average : 4.53
+   prev : 123.23 , freq : 119.71, actual : 138.89
+ #57 : error : -19.57 , average : 4.79
+   prev : 119.71 , freq : 121.01, actual : 140.57
+ #58 : error : -18.67 , average : 5.03
+   prev : 121.01 , freq : 122.99, actual : 141.66
+ #59 : error : -19.72 , average : 5.28
+   prev : 122.99 , freq : 122.99, actual : 142.71
+ #60 : error : -18.97 , average : 5.51
+   prev : 122.99 , freq : 124.04, actual : 143.01
+ #61 : error : 0.67 , average : 5.43
+   prev : 124.04 , freq : 143.98, actual : 143.31
+ #62 : error : 0.76 , average : 5.35
+   prev : 143.98 , freq : 144.23, actual : 143.46
+ #63 : error : -0.37 , average : 5.27
+   prev : 144.23 , freq : 143.40, actual : 143.77
+ #64 : error : -0.08 , average : 5.19
+   prev : 143.40 , freq : 144.15, actual : 144.23
+ #65 : error : -0.06 , average : 5.11
+   prev : 144.15 , freq : 144.76, actual : 144.82
+ #66 : error : -0.17 , average : 5.04
+   prev : 144.76 , freq : 145.53, actual : 145.71
+ #67 : error : -0.49 , average : 4.97
+   prev : 145.53 , freq : 146.42, actual : 146.91
+ #68 : error : -0.26 , average : 4.90
+   prev : 146.42 , freq : 148.03, actual : 148.28
+ #69 : error : -0.34 , average : 4.84
+   prev : 148.03 , freq : 149.50, actual : 149.84
+ #70 : error : -0.04 , average : 4.77
+   prev : 149.50 , freq : 151.23, actual : 151.27
+ #71 : error : -0.10 , average : 4.70
+   prev : 151.23 , freq : 152.30, actual : 152.41
+ #72 : error : -0.40 , average : 4.64
+   prev : 152.30 , freq : 153.32, actual : 153.72
+ #73 : error : -0.03 , average : 4.58
+   prev : 153.32 , freq : 154.70, actual : 154.72
+ #74 : error : -0.36 , average : 4.52
+   prev : 154.70 , freq : 154.87, actual : 155.23
