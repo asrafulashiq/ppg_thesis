@@ -90,7 +90,7 @@ for fileNo =  1%1:total_file_no
     while iSegment <= iStop
         
         % for debug
-        if iCounter==29
+        if iCounter==50
             1;
         end
         
@@ -104,7 +104,8 @@ for fileNo =  1%1:total_file_no
         
         currentSegment = iSegment : ( iSegment + 1000 * multiplier - 1 );
         
-        [freqEstimates,peaks] = doEEMD(sig(:,currentSegment),fPrev,delta_count,fSampling);
+        [freqEstimates,peaks] = doEEMD(sig(:,currentSegment),fPrev,delta_count,...
+            fSampling);
         
         % we construct Simf \3 Sa, 0.5, and from this set, we
         % take the peak location nearest to fprev
@@ -120,7 +121,7 @@ for fileNo =  1%1:total_file_no
             delta_count = 0;
             fprintf('tracking from AC : ');
             
-        elseif minimum <= 7 % If its distance from fprev is within 7 BPM
+        elseif minimum <= 9 % If its distance from fprev is within 7 BPM
             % tracking from emd 2
             freqEstimates = peaks(loc);
             if delta_count>0

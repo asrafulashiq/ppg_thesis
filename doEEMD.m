@@ -124,7 +124,7 @@ f_AC = [];
 if max(G_2)-min(G_2) <= 2
     f_AC = mean(G_2);
 else
-    [~,loc] = min(abs( G_2 - fPrev ));
+    [~,loc] = min (abs( G_2 - fPrev ));
     f_AC = G_2(loc);
 end
 
@@ -139,6 +139,8 @@ delta_AC = delta_0 + delta_count * delta_d;
 
 if abs( f_AC - fPrev ) < delta_AC
     freqEstimates = f_AC;
+end
+
 end
 
 

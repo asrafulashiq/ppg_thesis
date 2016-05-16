@@ -13,7 +13,7 @@ w=linspace(50,150,4000);
 ww = 2 * pi * w / (fSampling * 60); 
 fSig = abs(freqz(sig, 1, ww));
 
-[~,locs]=findpeaks(fSig, 'MINPEAKHEIGHT', 0.8*max(fSig),...
+[~,locs]=findpeaks(fSig, 'MINPEAKHEIGHT', 0.8 * max(fSig),...
                     'SORTSTR', 'descend');
                 
 if length(locs)==1
