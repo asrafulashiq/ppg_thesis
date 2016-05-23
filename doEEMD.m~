@@ -27,15 +27,11 @@ else
 end
 
 
-    counter = 1 ; %DEBUG
+    counter = 1 ; %D
 
 for i = 1:NE
     
     % imf for first channel
-        
-    rng(counter); %DEBUG
-    counter = counter + 1; % DEBUG
-    
     iSig = 2;
     sigWithNoise = awgn( sig(iSig,:), SNR, 'measured' );
     tmp_imfs = nwem( sigWithNoise );
@@ -44,10 +40,6 @@ for i = 1:NE
     end
     
     % imf for second channel
-    
-    rng(counter); %DEBUG
-    counter = counter + 1; % DEBUG
-    
     iSig = 3;
     sigWithNoise = awgn( sig(iSig,:), SNR, 'measured' );
     tmp_imfs = nwem( sigWithNoise );
