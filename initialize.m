@@ -29,6 +29,9 @@ secondHarmonicMax = -1;
 
 for i = 1:length(locs)
     for j = 1:length(locs)
+        
+        %%%%%%
+        
         if i ~= j && abs( 2 * peakFrequencies(i) - peakFrequencies(j)) < 5 
             if peakFrequencies(i) > secondHarmonicMax
                secondHarmonicMax =  peakFrequencies(i);
@@ -55,7 +58,10 @@ end
 accCloseFreqMax = -1 ; 
 
 for iFreqCount = 1 : length(locs)
-    for jAccFreqCount = 1 : length(dominantPeaksOfAcc)      
+    for jAccFreqCount = 1 : length(dominantPeaksOfAcc)  
+        
+        %%%%%%%%
+        
         if abs(peakFrequencies(iFreqCount) - dominantPeaksOfAcc(jAccFreqCount)) > 5
             if peakFrequencies(iFreqCount) > accCloseFreqMax
                accCloseFreqMax = peakFrequencies(iFreqCount); 

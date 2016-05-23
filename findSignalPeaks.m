@@ -1,7 +1,7 @@
 function fPeaks = findSignalPeaks(Y,fPrev,bound,fSampling)
 
-multiplier = fSampling/128;
-w=2*pi*linspace(fPrev-bound,fPrev+bound,100)/(125*60*multiplier);
+multiplier = fSampling/125;
+w=2*pi*linspace(fPrev-bound,fPrev+bound,100)/(fSampling*60);
 
 l=size(Y,1);
 locs=[];

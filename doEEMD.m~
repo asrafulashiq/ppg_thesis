@@ -27,11 +27,15 @@ else
 end
 
 
-    counter = 1 ; %D
+counter = 1 ; %DEBUG
 
 for i = 1:NE
     
     % imf for first channel
+    
+    rng(counter); %DEBUG
+    counter = counter + 1; % DEBUG
+    
     iSig = 2;
     sigWithNoise = awgn( sig(iSig,:), SNR, 'measured' );
     tmp_imfs = nwem( sigWithNoise );
@@ -40,6 +44,10 @@ for i = 1:NE
     end
     
     % imf for second channel
+    
+    rng(counter); %DEBUG
+    counter = counter + 1; % DEBUG
+    
     iSig = 3;
     sigWithNoise = awgn( sig(iSig,:), SNR, 'measured' );
     tmp_imfs = nwem( sigWithNoise );
@@ -57,14 +65,20 @@ sumOfImfs = zeros(1,length(sig(2,:)));
 for i = 1:length(imfs1)
     sumOfImfs = sumOfImfs + imfs1{i};
 end
-imfsAverage{1} = sumOfImfs / length(imfs1);
+
+%%%%%%%%%%%%%
+
+imfsAverage{1} = sumOfImfs ;%/ length(imfs1);
 
 % for channel 2
 sumOfImfs = zeros(1,length(sig(3,:)));
 for i = 1:length(imfs2)
     sumOfImfs = sumOfImfs + imfs2{i};
 end
-imfsAverage{2} = sumOfImfs / length(imfs2);
+
+%%%%%%%
+
+imfsAverage{2} = sumOfImfs ;%/ length(imfs2);
 
 % two selected IMFs obtained from both channels
 % are inspected in Fourier domain  and their maximum
@@ -103,19 +117,34 @@ end
 S_imf_a_3 = [] ; % Simf \3 Sa,0.5
 G_2 = [] ;
 
+
 for j = 1:length(S_imf)
     
     if min( abs( S_imf(j) - S_a ) ) > 3
         S_imf_a_3 = [S_imf_a_3 S_imf(j)];
+        
+        if j==1
+           if abs(S_imf(1)-S_imf(2))<2
+              G_2 = [G_2 , mean(S_imf)]; 
+           else
+               G_2 = [G_2, S_imf(j)];
+           end
+        elseif j==2
+            G_2 = [G_2 , S_imf(j)];
+        end
+        
     end
     
-    if min( abs( S_imf(j) - S_a ) ) > 2
-        G_2  = [G_2 S_imf(j)];
-    end
-    
+    %%%%%%%%%%%%
+      
 end
+G_2 = [];
+
 
 peaks = S_imf_a_3;
+
+%G_2 = S_imf;
+
 
 if isempty(G_2)
     %fprintf('G_2 is empty');
@@ -136,11 +165,14 @@ end
 % ?AC =?0 +m?d
 
 delta_0 = 5;
-delta_d = 1;
+
+%%%%%%%%%%%%%
+
+delta_d = 0.5;  % was 1 in paper
 
 delta_AC = delta_0 + delta_count * delta_d;
 
-if abs( f_AC - fPrev ) < delta_AC
+if abs( f_AC - fPrev ) <= delta_AC
     freqEstimates = f_AC;
 end
 

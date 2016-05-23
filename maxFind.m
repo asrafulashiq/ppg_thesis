@@ -3,7 +3,7 @@ function maxFreq = maxFind(sig,fSampling)
     w = linspace(0, 200,1000);
     ww = w/(fSampling*60)*2*pi; % radian per sampling
     y = abs( freqz( sig,1,ww ) );
-    [maxVal,loc] = max(y);
+    [~,loc] = max(y);
     
     maxFreq = w(loc);
 
