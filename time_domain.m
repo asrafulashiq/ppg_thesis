@@ -42,6 +42,8 @@ function y=time_domain(x,bx,by,bz,mul)
 end
 
 
+
+
      
      
    
