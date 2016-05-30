@@ -184,7 +184,7 @@ for fileNo =  1%1:total_file_no
                 
 %%%% according to paper 
 %                 % strongest peak in Srls is looked for such that it lies
-%                 % close to fprev within a range 7 - 12 BPM
+%                 % close to fprev within a range
 %                 
 %                 f_ = maxFind(y_cropped,fSampling);
 %                 if abs(f_ - fPrev) <= 9
