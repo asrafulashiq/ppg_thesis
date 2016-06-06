@@ -22,7 +22,7 @@ fileToSaveResult = 'result.txt';
 fileID = fopen(fileToSaveResult,'a');
 
 
-for fileNo =  2%1:total_file_no
+for fileNo =  1%1:total_file_no
     
     fprintf(fileID,'----------\nfile no : %d\n---------\n',fileNo);
     

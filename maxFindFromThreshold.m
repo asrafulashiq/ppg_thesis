@@ -4,9 +4,7 @@ function maxFreqs = maxFindFromThreshold (sig,threshold,fSampling)
    ww = 2*pi*w / (fSampling*60);
     
    Psig = abs(freqz( sig,1,ww )).^2;
-   
-   
-
+ 
    [ ~ , maxLocs] =  findpeaks(Psig,'minpeakheight',threshold * max(Psig),...
     'minpeakdistance',3,'SortStr','descend');
 
